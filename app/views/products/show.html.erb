@@ -1,0 +1,28 @@
+<p>
+  <b>Id:</b>
+  <%= @product.id %>
+</p>
+ 
+<p>
+  <b>Name:</b>
+  <%= @product.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @product.description %>
+</p>
+ 
+ 
+<p>
+  <b>Price:</b>
+  <%= @product.price %>
+</p>
+
+<p>
+  <b>Size:</b>
+  <%size=Size.find(@product.size_id)%><%=size.name%>
+  <%#= @product.size %>
+</p>
+ 
+ <%#= link_to 'Back', products_path %>

@@ -1,0 +1,38 @@
+<%= form_for([@category, @product]) do |f| %>
+<% if @product.errors.any? %>
+  <div id="errorExplanation">
+    <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+    <ul>
+    <% @product.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description ,:cols=>35, :rows=>10 %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br />
+    <%= f.text_field :price %>
+  </div><br/>
+  <div class="field">
+    <%= f.label :size %><br />
+    <%#= f.text_field :size %>
+	<%=select_tag "size_id", options_from_collection_for_select(@size=Size.all, "id", "name"), :prompt => "Select something"%>
+  </div><br/>
+  <b>Upload Image :</b><br/><br/>
+        <div class="field">
+        <%= f.label :file %><br />      
+                <%= f.file_field :image, :size => 30 %><br/>
+                 
+        </div><br/>   
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

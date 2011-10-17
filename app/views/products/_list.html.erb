@@ -1,0 +1,34 @@
+<head>
+	<style type="text/css">
+		#user{border-width:1px;background-color:#FFFFCC;padding:2px;} 
+	</style>
+</head>
+<body>
+<h2>Listing Products</h2>
+<td><%#=link_to "New Product",{:controller =>"products",:action =>"new"}%></td>
+<table id="user"  border="1" cellspacing="0" cellpadding="0" ">
+<tr>
+<th>Id</th>
+<th >Name</th>
+<th>Size</th>
+<th>Price</th>
+<th></th>
+</tr>
+ 
+<% for product in @all_products %>
+  <tr>
+    <td ><%=product.id%></td>
+    <td><%= product.name %></td>
+	<td ><%size=Size.find(product.size_id)%><%=size.name%></td>
+    <td><%=product.price %></td>
+    <%#=link_to user.email,{:controller =>"categories",:action =>"edit",:id =>category.id}%>
+	<td ><%=link_to "show",{:controller =>"products",:action =>"show",:id =>product.id}%>
+	<%= link_to "Delete",{:controller=>'products', :action=>'destroy',:id=>product.id}, :confirm => "Are you sure?", :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+</body>
+<br/><br/>
+<%= link_to 'Back', categories_path %>
+<%= will_paginate @all_products %>
+ 

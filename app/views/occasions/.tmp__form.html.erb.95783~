@@ -1,0 +1,24 @@
+<%= form_for(@occasion) do |f| %>
+<% if @occasion.errors.any? %>
+  <div id="errorExplanation">
+    <h2><%= pluralize(@occasion.errors.count, "error") %> prohibited this occasion from being saved:</h2>
+    <ul>
+    <% @occasion.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description ,:cols=>35, :rows=>10 %>
+  </div>
+  <br/>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

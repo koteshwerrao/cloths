@@ -1,0 +1,3 @@
+<h2>New Occassion:</h2>
+<%= render "occasions/form" %>
+<%= link_to 'Back', occasions_path %>

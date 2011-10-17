@@ -1,0 +1,24 @@
+<% if user_signed_in? -%>
+<% if current_user.admin -%>
+   <h1>Welcome To Admin Dashboard</h1>
+      <table width=100%>
+  <tr><td width=30%>Email</td><td>Name</td><td>Edit</td><td>Delete</td></tr>
+
+<%
+@categories ||=Category.find(:all)
+@users ||=User.find(:all)
+@users.each do |user|
+  %>
+  <tr><td> <%=user.email%></td><td><%=user.firstname%></td><td><%=link_to "Edit", {:controller=>'home', :action=>'edit',:id=>user.id}%></td><td><%= link_to "Delete",{:controller=>'home', :action=>'destroy',:id=>user.id}, :confirm => "Are you sure?", :method => :delete %></td></tr>
+<%end%>
+  </table>
+      <%else%>
+      <h1>Welcome To User Dashboard</h1>
+      <%end%>
+      <%end%>
+  <p><%= link_to 'Category Management', categories_path %></p>
+  <p><%= link_to 'Occassion  Management', occasions_path %></p>
+      
+
+
+

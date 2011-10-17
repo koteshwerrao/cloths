@@ -1,0 +1,34 @@
+<head>
+	<style type="text/css">
+		#user{border-width:1px;background-color:#FFFFCC;padding:2px;} 
+	</style>
+</head>
+<body>
+<h2>Listing Occasions</h2>
+<td><%=link_to "New Occassion",{:controller =>"occasions",:action =>"new"}%></td><br/>
+
+
+<table id="user"  border="1" cellspacing="0" cellpadding="0" ">
+<tr>
+<th>Id</th>
+<th >Name</th>
+<th >Description</th>
+<th></th>
+</tr>
+ 
+<% for occasion in @occasions %>
+  <tr>
+    <td ><%=occasion.id%></td>
+    <td><%=occasion.name %></td>
+	<td><%=occasion.description %></td>
+	<td ><%=link_to "Edit",{:controller =>"occasions",:action =>"edit",:id =>occasion.id}%>
+	<%= link_to "Delete",{:controller=>'occasions', :action=>'destroy',:id=>occasion.id}, :confirm => "Are you sure?", :method => :delete %>
+	<%#= link_to 'products', category_products_path(category) %></td>
+  </tr>
+<% end %>
+</table>
+</body>
+<br/><br/>
+<%= link_to 'Back', products_path %>
+<%#= will_paginate @categories %>
+ 

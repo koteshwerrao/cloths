@@ -1,0 +1,40 @@
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@customer.errors.count, "error") %> prohibited this customer from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+ <p><%= f.label :firstname %><br />
+  <%= f.text_field :firstname %></p>
+ 
+ 
+  <p><%= f.label :lastname %><br />
+  <%= f.text_field :lastname %></p>
+  
+  <p><%= f.label :email %><br />
+  <%= f.email_field :email %></p>
+
+  <p><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+  <%= f.password_field :password %></p>
+
+  <p><%= f.label :password_confirmation %><br />
+  <%= f.password_field :password_confirmation %></p>
+
+  <p><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+  <%= f.password_field :current_password %></p>
+
+  <p><%= f.submit "Update" %></p>
+<% end %>
+
+<h3>Cancel my account</h3>
+
+<p>Unhappy?<%= link_to "Cancel my account",{:controller=>'home', :action=>'destroy',:id=>@user.id}, :confirm => "Are you sure?", :method => :delete %> .</p>
+
+<%= link_to "Back", :back %>

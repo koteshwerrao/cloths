@@ -1,0 +1,30 @@
+<head>
+	<style type="text/css">
+		#user{border-width:1px;background-color:#FFFFCC;padding:2px;} 
+	</style>
+</head>
+<body>
+<h2>Listing sizes</h2>
+<td><%=link_to "New Size",{:controller =>"sizes",:action =>"new"}%></td><br/><br/>
+<table id="user"  border="1" cellspacing="0" cellpadding="0" ">
+<tr>
+<th>Id</th>
+<th >Name</th>
+<th></th>
+</tr>
+ 
+<% for size in @sizes %>
+  <tr>
+    <td ><%=size.id%></td>
+    <td><%= size.name %></td>
+	<td ><%=link_to "edit",{:controller =>"sizes",:action =>"edit",:id =>size.id}%>
+	<%= link_to "Delete",{:controller=>'sizes', :action=>'destroy',:id=>size.id}, :confirm => "Are you sure?", :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+<%= link_to 'Back', products_path %>
+</body>
+<br/><br/>
+
+<%= will_paginate @products %>
+ 
